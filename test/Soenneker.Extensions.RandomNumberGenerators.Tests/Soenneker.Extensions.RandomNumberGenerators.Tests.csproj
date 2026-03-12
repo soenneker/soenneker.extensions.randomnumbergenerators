@@ -15,7 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.Extensions.RandomNumberGenerators.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.Extensions.RandomNumberGenerators\Soenneker.Extensions.RandomNumberGenerators.csproj" />
     </ItemGroup>
 
     <ItemGroup>
