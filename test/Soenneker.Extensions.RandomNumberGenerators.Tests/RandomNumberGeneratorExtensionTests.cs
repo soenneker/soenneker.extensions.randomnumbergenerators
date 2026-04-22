@@ -1,11 +1,10 @@
-﻿using Soenneker.Tests.Unit;
-using Xunit;
+using Soenneker.Tests.Unit;
 
 namespace Soenneker.Extensions.RandomNumberGenerators.Tests;
 
 public sealed class RandomNumberGeneratorExtensionTests : UnitTest
 {
-    [Fact]
+    [Test]
     public void Default()
     {
 
