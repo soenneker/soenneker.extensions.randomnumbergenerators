@@ -27,17 +27,21 @@ public static class RandomNumberGeneratorExtension
         if (exclusiveMax <= 0)
             throw new ArgumentOutOfRangeException(nameof(exclusiveMax));
 
-        ulong max = (ulong)exclusiveMax;
+        return (long)GetUInt64(rng, (ulong)exclusiveMax);
+    }
+
+    private static ulong GetUInt64(RandomNumberGenerator rng, ulong exclusiveMax)
+    {
 
         // Rejection threshold to avoid modulo bias
         // Equivalent to: (2^64 % max)
-        ulong rejectThreshold = unchecked((ulong)(0UL - max)) % max;
+        ulong rejectThreshold = unchecked(0UL - exclusiveMax) % exclusiveMax;
 
         while (true)
         {
             ulong value = rng.GetUInt64();
             if (value >= rejectThreshold)
-                return (long)(value % max);
+                return value % exclusiveMax;
         }
     }
 
@@ -65,7 +69,10 @@ public static class RandomNumberGeneratorExtension
         if (min >= max)
             throw new ArgumentOutOfRangeException();
 
-        return min + rng.GetInt64(max - min);
+        ulong width = unchecked((ulong)(max - min));
+        ulong offset = GetUInt64(rng, width);
+
+        return unchecked((long)((ulong)min + offset));
     }
 
     /// <summary>
