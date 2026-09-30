@@ -6,7 +6,7 @@ namespace Soenneker.Extensions.RandomNumberGenerators.Tests;
 public sealed class RandomNumberGeneratorExtensionTests : UnitTest
 {
     [Test]
-    public async System.Threading.Tasks.Task Supports_ranges_wider_than_Int64_MaxValue()
+    public async System.Threading.Tasks.ValueTask Supports_ranges_wider_than_Int64_MaxValue()
     {
         using RandomNumberGenerator rng = RandomNumberGenerator.Create();
 
